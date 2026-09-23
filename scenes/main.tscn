@@ -1,0 +1,1040 @@
+[gd_scene format=4 uid="uid://dtn3gb45j5cqn"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
+[ext_resource type="Script" uid="uid://qcfuivnh4gxc" path="res://scripts/player.gd" id="1_h2yge"]
+[ext_resource type="Script" path="res://scripts/ground.gd" id="3_ground"]
+[ext_resource type="Texture2D" path="res://art/cats/cat_meowicorn.png" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cil6vrs6xqc55" path="res://art/tiles.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" path="res://art/sky.png" id="5_sky"]
+[ext_resource type="Texture2D" path="res://art/rainbow.png" id="6_rainbow"]
+[ext_resource type="Texture2D" path="res://art/clouds_far.png" id="7_far"]
+[ext_resource type="Texture2D" path="res://art/clouds_near.png" id="8_near"]
+[ext_resource type="Texture2D" path="res://art/rainbow_strip.png" id="9_strip"]
+[ext_resource type="Script" path="res://scripts/trail.gd" id="10_trail"]
+[ext_resource type="Script" path="res://scripts/shop.gd" id="11_shop"]
+[ext_resource type="Texture2D" path="res://art/icon_cloud.png" id="12_cloud"]
+[ext_resource type="Texture2D" path="res://art/icon_bag.png" id="13_bag"]
+[ext_resource type="Texture2D" path="res://art/donut.png" id="14_donut"]
+[ext_resource type="Texture2D" path="res://art/icon_book.png" id="15_book"]
+[ext_resource type="Texture2D" path="res://art/icon_gear.png" id="17_gear"]
+[ext_resource type="Texture2D" path="res://art/icon_shop.png" id="18_shop"]
+[ext_resource type="Texture2D" path="res://art/icon_pause.png" id="19_pause"]
+[ext_resource type="Texture2D" path="res://art/icon_home.png" id="20_home"]
+[ext_resource type="Texture2D" path="res://art/icon_play.png" id="21_play"]
+[ext_resource type="Texture2D" path="res://art/icon_restart.png" id="22_restart"]
+[ext_resource type="Texture2D" path="res://art/key_space.png" id="23_space"]
+[ext_resource type="Texture2D" path="res://art/key_r.png" id="24_r"]
+[ext_resource type="Texture2D" path="res://art/icon_trophy.png" id="25_trophy"]
+[ext_resource type="Texture2D" path="res://art/key_up.png" id="27_up"]
+[ext_resource type="Texture2D" path="res://art/key_w.png" id="28_w"]
+[ext_resource type="Texture2D" path="res://art/icon_close.png" id="29_close"]
+[ext_resource type="Texture2D" path="res://art/icon_crown.png" id="30_crown"]
+[ext_resource type="Script" path="res://scripts/achievements.gd" id="26_ach"]
+[ext_resource type="Script" path="res://scripts/help.gd" id="16_help"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cloud"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 0.55)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cloud_button"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 1, 1, 0.55)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cloud_button_hover"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 1, 1, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frame"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 1, 1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_menu"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.65)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_menu_hover"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.9)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cloud_hover"]
+bg_color = Color(1, 1, 1, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_donut"]
+atlas = ExtResource("14_donut")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Gradient" id="Gradient_trail"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v46p"]
+size = Vector2(22, 26)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
+texture = ExtResource("2_0xm2m")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -4, -16, -4)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -4, -16, -4)
+
+[sub_resource type="TileSet" id="TileSet_0xm2m"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_h2yge")
+
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dead_donut"]
+atlas = ExtResource("14_donut")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Main" type="Node" unique_id=1538296631]
+process_mode = 3
+script = ExtResource("1_game")
+
+[node name="Sky" type="Parallax2D" parent="." unique_id=1200000001]
+process_mode = 1
+scroll_scale = Vector2(0, 0)
+
+[node name="SkySprite" type="Sprite2D" parent="Sky" unique_id=1200000002]
+texture = ExtResource("5_sky")
+centered = false
+
+[node name="Rainbow" type="Parallax2D" parent="." unique_id=1200000004]
+process_mode = 1
+scroll_scale = Vector2(0.08, 0)
+repeat_size = Vector2(1280, 0)
+repeat_times = 3
+
+[node name="RainbowSprite" type="Sprite2D" parent="Rainbow" unique_id=1200000005]
+texture = ExtResource("6_rainbow")
+centered = false
+
+[node name="CloudsFar" type="Parallax2D" parent="." unique_id=1200000006]
+process_mode = 1
+scroll_scale = Vector2(0.2, 0.02)
+repeat_size = Vector2(640, 0)
+repeat_times = 3
+autoscroll = Vector2(-6, 0)
+
+[node name="CloudsFarSprite" type="Sprite2D" parent="CloudsFar" unique_id=1200000007]
+texture = ExtResource("7_far")
+centered = false
+
+[node name="CloudsNear" type="Parallax2D" parent="." unique_id=1200000008]
+process_mode = 1
+scroll_scale = Vector2(0.45, 0.05)
+repeat_size = Vector2(640, 0)
+repeat_times = 3
+autoscroll = Vector2(-14, 0)
+
+[node name="CloudsNearSprite" type="Sprite2D" parent="CloudsNear" unique_id=1200000009]
+texture = ExtResource("8_near")
+centered = false
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1837013193]
+process_mode = 1
+tile_map_data = PackedByteArray("AAAIABoAAAAAAAAAAAAIABsAAAABAAAAAAAIABwAAAABAAAAAAAIAB0AAAABAAAAAAAIAB4AAAABAAAAAAAJABoAAAAAAAAAAAAJABsAAAABAAAAAAAJABwAAAABAAAAAAAJAB0AAAABAAAAAAAJAB4AAAABAAAAAAAKABoAAAAAAAAAAAAKABsAAAABAAAAAAAKABwAAAABAAAAAAAKAB0AAAABAAAAAAAKAB4AAAABAAAAAAALABoAAAAAAAAAAAALABsAAAABAAAAAAALABwAAAABAAAAAAALAB0AAAABAAAAAAALAB4AAAABAAAAAAAMABoAAAAAAAAAAAAMABsAAAABAAAAAAAMABwAAAABAAAAAAAMAB0AAAABAAAAAAAMAB4AAAABAAAAAAANABoAAAAAAAAAAAANABsAAAABAAAAAAANABwAAAABAAAAAAANAB0AAAABAAAAAAANAB4AAAABAAAAAAAOABoAAAAAAAAAAAAOABsAAAABAAAAAAAOABwAAAABAAAAAAAOAB0AAAABAAAAAAAOAB4AAAABAAAAAAAPABoAAAAAAAAAAAAPABsAAAABAAAAAAAPABwAAAABAAAAAAAPAB0AAAABAAAAAAAPAB4AAAABAAAAAAAQABoAAAAAAAAAAAAQABsAAAABAAAAAAAQABwAAAABAAAAAAAQAB0AAAABAAAAAAAQAB4AAAABAAAAAAARABoAAAAAAAAAAAARABsAAAABAAAAAAARABwAAAABAAAAAAARAB0AAAABAAAAAAARAB4AAAABAAAAAAASABoAAAAAAAAAAAASABsAAAABAAAAAAASABwAAAABAAAAAAASAB0AAAABAAAAAAASAB4AAAABAAAAAAATABoAAAAAAAAAAAATABsAAAABAAAAAAATABwAAAABAAAAAAATAB0AAAABAAAAAAATAB4AAAABAAAAAAAUABoAAAAAAAAAAAAUABsAAAABAAAAAAAUABwAAAABAAAAAAAUAB0AAAABAAAAAAAUAB4AAAABAAAAAAAVABoAAAAAAAAAAAAVABsAAAABAAAAAAAVABwAAAABAAAAAAAVAB0AAAABAAAAAAAVAB4AAAABAAAAAAAWABoAAAAAAAAAAAAWABsAAAABAAAAAAAWABwAAAABAAAAAAAWAB0AAAABAAAAAAAWAB4AAAABAAAAAAAXABoAAAAAAAAAAAAXABsAAAABAAAAAAAXABwAAAABAAAAAAAXAB0AAAABAAAAAAAXAB4AAAABAAAAAAAYABoAAAAAAAAAAAAYABsAAAABAAAAAAAYABwAAAABAAAAAAAYAB0AAAABAAAAAAAYAB4AAAABAAAAAAAZABoAAAAAAAAAAAAZABsAAAABAAAAAAAZABwAAAABAAAAAAAZAB0AAAABAAAAAAAZAB4AAAABAAAAAAAaABoAAAAAAAAAAAAaABsAAAABAAAAAAAaABwAAAABAAAAAAAaAB0AAAABAAAAAAAaAB4AAAABAAAAAAAbABoAAAAAAAAAAAAbABsAAAABAAAAAAAbABwAAAABAAAAAAAbAB0AAAABAAAAAAAbAB4AAAABAAAAAAAcABoAAAAAAAAAAAAcABsAAAABAAAAAAAcABwAAAABAAAAAAAcAB0AAAABAAAAAAAcAB4AAAABAAAAAAAdABoAAAAAAAAAAAAdABsAAAABAAAAAAAdABwAAAABAAAAAAAdAB0AAAABAAAAAAAdAB4AAAABAAAAAAAeABoAAAAAAAAAAAAeABsAAAABAAAAAAAeABwAAAABAAAAAAAeAB0AAAABAAAAAAAeAB4AAAABAAAAAAAfABoAAAAAAAAAAAAfABsAAAABAAAAAAAfABwAAAABAAAAAAAfAB0AAAABAAAAAAAfAB4AAAABAAAAAAAgABoAAAAAAAAAAAAgABsAAAABAAAAAAAgABwAAAABAAAAAAAgAB0AAAABAAAAAAAgAB4AAAABAAAAAAAhABoAAAAAAAAAAAAhABsAAAABAAAAAAAhABwAAAABAAAAAAAhAB0AAAABAAAAAAAhAB4AAAABAAAAAAAiABoAAAAAAAAAAAAiABsAAAABAAAAAAAiABwAAAABAAAAAAAiAB0AAAABAAAAAAAiAB4AAAABAAAAAAAjABoAAAAAAAAAAAAjABsAAAABAAAAAAAjABwAAAABAAAAAAAjAB0AAAABAAAAAAAjAB4AAAABAAAAAAAkABoAAAAAAAAAAAAkABsAAAABAAAAAAAkABwAAAABAAAAAAAkAB0AAAABAAAAAAAkAB4AAAABAAAAAAAlABoAAAAAAAAAAAAlABsAAAABAAAAAAAlABwAAAABAAAAAAAlAB0AAAABAAAAAAAlAB4AAAABAAAAAAAmABoAAAAAAAAAAAAmABsAAAABAAAAAAAmABwAAAABAAAAAAAmAB0AAAABAAAAAAAmAB4AAAABAAAAAAAnABoAAAAAAAAAAAAnABsAAAABAAAAAAAnABwAAAABAAAAAAAnAB0AAAABAAAAAAAnAB4AAAABAAAAAAAoABoAAAAAAAAAAAAoABsAAAABAAAAAAAoABwAAAABAAAAAAAoAB0AAAABAAAAAAAoAB4AAAABAAAAAAApABoAAAAAAAAAAAApABsAAAABAAAAAAApABwAAAABAAAAAAApAB0AAAABAAAAAAApAB4AAAABAAAAAAAqABoAAAAAAAAAAAAqABsAAAABAAAAAAAqABwAAAABAAAAAAAqAB0AAAABAAAAAAAqAB4AAAABAAAAAAArABoAAAAAAAAAAAArABsAAAABAAAAAAArABwAAAABAAAAAAArAB0AAAABAAAAAAArAB4AAAABAAAAAAAsABoAAAAAAAAAAAAsABsAAAABAAAAAAAsABwAAAABAAAAAAAsAB0AAAABAAAAAAAsAB4AAAABAAAAAAAtABoAAAAAAAAAAAAtABsAAAABAAAAAAAtABwAAAABAAAAAAAtAB0AAAABAAAAAAAtAB4AAAABAAAAAAAuABoAAAAAAAAAAAAuABsAAAABAAAAAAAuABwAAAABAAAAAAAuAB0AAAABAAAAAAAuAB4AAAABAAAAAAAvABoAAAAAAAAAAAAvABsAAAABAAAAAAAvABwAAAABAAAAAAAvAB0AAAABAAAAAAAvAB4AAAABAAAAAAAwABoAAAAAAAAAAAAwABsAAAABAAAAAAAwABwAAAABAAAAAAAwAB0AAAABAAAAAAAwAB4AAAABAAAAAAA0ABoAAAAAAAAAAAA0ABsAAAABAAAAAAA0ABwAAAABAAAAAAA0AB0AAAABAAAAAAA0AB4AAAABAAAAAAA1ABoAAAAAAAAAAAA1ABsAAAABAAAAAAA1ABwAAAABAAAAAAA1AB0AAAABAAAAAAA1AB4AAAABAAAAAAA2ABoAAAAAAAAAAAA2ABsAAAABAAAAAAA2ABwAAAABAAAAAAA2AB0AAAABAAAAAAA2AB4AAAABAAAAAAA3ABoAAAAAAAAAAAA3ABsAAAABAAAAAAA3ABwAAAABAAAAAAA3AB0AAAABAAAAAAA3AB4AAAABAAAAAAA4ABoAAAAAAAAAAAA4ABsAAAABAAAAAAA4ABwAAAABAAAAAAA4AB0AAAABAAAAAAA4AB4AAAABAAAAAAA5ABoAAAAAAAAAAAA5ABsAAAABAAAAAAA5ABwAAAABAAAAAAA5AB0AAAABAAAAAAA5AB4AAAABAAAAAAA6ABoAAAAAAAAAAAA6ABsAAAABAAAAAAA6ABwAAAABAAAAAAA6AB0AAAABAAAAAAA6AB4AAAABAAAAAAA7ABoAAAAAAAAAAAA7ABsAAAABAAAAAAA7ABwAAAABAAAAAAA7AB0AAAABAAAAAAA7AB4AAAABAAAAAAA8ABoAAAAAAAAAAAA8ABsAAAABAAAAAAA8ABwAAAABAAAAAAA8AB0AAAABAAAAAAA8AB4AAAABAAAAAAA9ABoAAAAAAAAAAAA9ABsAAAABAAAAAAA9ABwAAAABAAAAAAA9AB0AAAABAAAAAAA9AB4AAAABAAAAAAA+ABoAAAAAAAAAAAA+ABsAAAABAAAAAAA+ABwAAAABAAAAAAA+AB0AAAABAAAAAAA+AB4AAAABAAAAAAA/ABoAAAAAAAAAAAA/ABsAAAABAAAAAAA/ABwAAAABAAAAAAA/AB0AAAABAAAAAAA/AB4AAAABAAAAAABAABoAAAAAAAAAAABAABsAAAABAAAAAABAABwAAAABAAAAAABAAB0AAAABAAAAAABAAB4AAAABAAAAAABBABoAAAAAAAAAAABBABsAAAABAAAAAABBABwAAAABAAAAAABBAB0AAAABAAAAAABBAB4AAAABAAAAAABCABoAAAAAAAAAAABCABsAAAABAAAAAABCABwAAAABAAAAAABCAB0AAAABAAAAAABCAB4AAAABAAAAAABDABoAAAAAAAAAAABDABsAAAABAAAAAABDABwAAAABAAAAAABDAB0AAAABAAAAAABDAB4AAAABAAAAAABEABoAAAAAAAAAAABEABsAAAABAAAAAABEABwAAAABAAAAAABEAB0AAAABAAAAAABEAB4AAAABAAAAAABFABoAAAAAAAAAAABFABsAAAABAAAAAABFABwAAAABAAAAAABFAB0AAAABAAAAAABFAB4AAAABAAAAAABGABoAAAAAAAAAAABGABsAAAABAAAAAABGABwAAAABAAAAAABGAB0AAAABAAAAAABGAB4AAAABAAAAAABHABoAAAAAAAAAAABHABsAAAABAAAAAABHABwAAAABAAAAAABHAB0AAAABAAAAAABHAB4AAAABAAAAAABIABoAAAAAAAAAAABIABsAAAABAAAAAABIABwAAAABAAAAAABIAB0AAAABAAAAAABIAB4AAAABAAAAAABJABoAAAAAAAAAAABJABsAAAABAAAAAABJABwAAAABAAAAAABJAB0AAAABAAAAAABJAB4AAAABAAAAAABKABoAAAAAAAAAAABKABsAAAABAAAAAABKABwAAAABAAAAAABKAB0AAAABAAAAAABKAB4AAAABAAAAAABLABoAAAAAAAAAAABLABsAAAABAAAAAABLABwAAAABAAAAAABLAB0AAAABAAAAAABLAB4AAAABAAAAAABMABoAAAAAAAAAAABMABsAAAABAAAAAABMABwAAAABAAAAAABMAB0AAAABAAAAAABMAB4AAAABAAAAAABNABoAAAAAAAAAAABNABsAAAABAAAAAABNABwAAAABAAAAAABNAB0AAAABAAAAAABNAB4AAAABAAAAAABOABoAAAAAAAAAAABOABsAAAABAAAAAABOABwAAAABAAAAAABOAB0AAAABAAAAAABOAB4AAAABAAAAAABPABoAAAAAAAAAAABPABsAAAABAAAAAABPABwAAAABAAAAAABPAB0AAAABAAAAAABPAB4AAAABAAAAAABQABoAAAAAAAAAAABQABsAAAABAAAAAABQABwAAAABAAAAAABQAB0AAAABAAAAAABQAB4AAAABAAAAAABRABoAAAAAAAAAAABRABsAAAABAAAAAABRABwAAAABAAAAAABRAB0AAAABAAAAAABRAB4AAAABAAAAAABSABoAAAAAAAAAAABSABsAAAABAAAAAABSABwAAAABAAAAAABSAB0AAAABAAAAAABSAB4AAAABAAAAAABTABoAAAAAAAAAAABTABsAAAABAAAAAABTABwAAAABAAAAAABTAB0AAAABAAAAAABTAB4AAAABAAAAAABUABoAAAAAAAAAAABUABsAAAABAAAAAABUABwAAAABAAAAAABUAB0AAAABAAAAAABUAB4AAAABAAAAAABVABoAAAAAAAAAAABVABsAAAABAAAAAABVABwAAAABAAAAAABVAB0AAAABAAAAAABVAB4AAAABAAAAAABWABoAAAAAAAAAAABWABsAAAABAAAAAABWABwAAAABAAAAAABWAB0AAAABAAAAAABWAB4AAAABAAAAAABXABoAAAAAAAAAAABXABsAAAABAAAAAABXABwAAAABAAAAAABXAB0AAAABAAAAAABXAB4AAAABAAAAAABYABoAAAAAAAAAAABYABsAAAABAAAAAABYABwAAAABAAAAAABYAB0AAAABAAAAAABYAB4AAAABAAAAAABZABoAAAAAAAAAAABZABsAAAABAAAAAABZABwAAAABAAAAAABZAB0AAAABAAAAAABZAB4AAAABAAAAAABaABoAAAAAAAAAAABaABsAAAABAAAAAABaABwAAAABAAAAAABaAB0AAAABAAAAAABaAB4AAAABAAAAAAA=")
+tile_set = SubResource("TileSet_0xm2m")
+script = ExtResource("3_ground")
+
+[node name="Trail" type="Line2D" parent="." unique_id=1200000040]
+process_mode = 1
+z_index = 1
+width = 14.0
+default_color = Color(1, 1, 1, 1)
+gradient = SubResource("Gradient_trail")
+texture = ExtResource("9_strip")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("10_trail")
+
+[node name="Things" type="Node2D" parent="." unique_id=1200000003]
+process_mode = 1
+
+[node name="Friends" type="Node2D" parent="." unique_id=1200000070]
+process_mode = 1
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=789020326 groups=["player"]]
+process_mode = 1
+position = Vector2(384, 790)
+script = ExtResource("1_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1794527491]
+texture = ExtResource("1_ig7tw")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1522257476]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_2v46p")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=410052881]
+offset = Vector2(150, -30)
+limit_left = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+drag_vertical_enabled = true
+drag_top_margin = 0.35
+drag_bottom_margin = 0.35
+limit_top = 0
+limit_bottom = 1060
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1200000010]
+process_mode = 3
+
+[node name="Stats" type="PanelContainer" parent="HUD" unique_id=1200000080]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_cloud")
+
+[node name="Rows" type="VBoxContainer" parent="HUD/Stats" unique_id=1200000090]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BestRow" type="HBoxContainer" parent="HUD/Stats/Rows" unique_id=1200000160]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="BestLabel" type="Label" parent="HUD/Stats/Rows/BestRow" unique_id=1200000161]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 24)
+theme_override_colors/font_color = Color(0.4, 0.2, 0.45, 1)
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CrownIcon" type="TextureRect" parent="HUD/Stats/Rows/BestRow" unique_id=1200000162]
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+texture = ExtResource("30_crown")
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
+
+[node name="TotalRow" type="HBoxContainer" parent="HUD/Stats/Rows" unique_id=1200000087]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="TotalLabel" type="Label" parent="HUD/Stats/Rows/TotalRow" unique_id=1200000086]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 24)
+theme_override_colors/font_color = Color(0.4, 0.2, 0.45, 1)
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BagIcon" type="TextureRect" parent="HUD/Stats/Rows/TotalRow" unique_id=1200000085]
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+texture = ExtResource("13_bag")
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
+
+[node name="ScoreRow" type="HBoxContainer" parent="HUD/Stats/Rows" unique_id=1200000089]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="ScoreLabel" type="Label" parent="HUD/Stats/Rows/ScoreRow" unique_id=1200000082]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 24)
+theme_override_colors/font_color = Color(0.4, 0.2, 0.45, 1)
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CloudIcon" type="TextureRect" parent="HUD/Stats/Rows/ScoreRow" unique_id=1200000081]
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+texture = ExtResource("12_cloud")
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
+
+[node name="DonutRow" type="HBoxContainer" parent="HUD/Stats/Rows" unique_id=1200000088]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="DonutLabel" type="Label" parent="HUD/Stats/Rows/DonutRow" unique_id=1200000084]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 24)
+theme_override_colors/font_color = Color(0.4, 0.2, 0.45, 1)
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DonutIcon" type="TextureRect" parent="HUD/Stats/Rows/DonutRow" unique_id=1200000083]
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+texture = SubResource("AtlasTexture_donut")
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
+
+[node name="FlyRow" type="VBoxContainer" parent="HUD" unique_id=1200000012]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 8.0
+offset_right = 240.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Hint" type="HBoxContainer" parent="HUD/FlyRow" unique_id=1200000102]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="SpaceKey" type="TextureRect" parent="HUD/FlyRow/Hint" unique_id=1200000097]
+layout_mode = 2
+texture = ExtResource("23_space")
+stretch_mode = 3
+texture_filter = 1
+
+[node name="FlapLabel" type="Label" parent="HUD/FlyRow/Hint" unique_id=1200000098]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.75, 0.1, 1)
+theme_override_colors/font_shadow_color = Color(0.5, 0.2, 0.4, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "to flap your wings!"
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="HUD/FlyRow" unique_id=1200000096]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.45, 0.15, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.3, 0.1, 0.3, 0.7)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "8.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseButton" type="Button" parent="HUD" unique_id=1200000095]
+focus_mode = 0
+visible = false
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("19_pause")
+icon_alignment = 1
+expand_icon = true
+
+[node name="StartPanel" type="Control" parent="HUD" unique_id=1200000020]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Backdrop" type="ColorRect" parent="HUD/StartPanel" unique_id=1200000021]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.85, 0.95, 0.18)
+
+[node name="Title" type="Label" parent="HUD/StartPanel" unique_id=1200000022]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 34.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.85, 0.25, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "Meowicorn's
+Donut Adventure"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sub" type="HBoxContainer" parent="HUD/StartPanel" unique_id=1200000023]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -34.0
+offset_right = 240.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="SpaceKey" type="TextureRect" parent="HUD/StartPanel/Sub" unique_id=1200000028]
+layout_mode = 2
+texture = ExtResource("23_space")
+stretch_mode = 3
+texture_filter = 1
+
+[node name="Slash1" type="Label" parent="HUD/StartPanel/Sub" unique_id=1200000041]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.2, 0.4, 1)
+text = "/"
+vertical_alignment = 1
+
+[node name="UpKey" type="TextureRect" parent="HUD/StartPanel/Sub" unique_id=1200000042]
+layout_mode = 2
+texture = ExtResource("27_up")
+stretch_mode = 3
+texture_filter = 1
+
+[node name="Slash2" type="Label" parent="HUD/StartPanel/Sub" unique_id=1200000043]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.2, 0.4, 1)
+text = "/"
+vertical_alignment = 1
+
+[node name="WKey" type="TextureRect" parent="HUD/StartPanel/Sub" unique_id=1200000044]
+layout_mode = 2
+texture = ExtResource("28_w")
+stretch_mode = 3
+texture_filter = 1
+
+[node name="Text" type="Label" parent="HUD/StartPanel/Sub" unique_id=1200000029]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.2, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "to start!"
+vertical_alignment = 1
+
+[node name="SettingsButton" type="Button" parent="HUD/StartPanel" unique_id=1200000024]
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+offset_left = 10.0
+offset_top = 106.0
+offset_right = 50.0
+offset_bottom = 146.0
+icon = ExtResource("17_gear")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShopButton" type="Button" parent="HUD/StartPanel" unique_id=1200000025]
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+offset_left = 10.0
+offset_top = 58.0
+offset_right = 50.0
+offset_bottom = 98.0
+icon = ExtResource("18_shop")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HelpButton" type="Button" parent="HUD/StartPanel" unique_id=1200000027]
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+icon = ExtResource("15_book")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TrophyButton" type="Button" parent="HUD/StartPanel" unique_id=1200000030]
+focus_mode = 0
+offset_left = 10.0
+offset_top = 154.0
+offset_right = 50.0
+offset_bottom = 194.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("25_trophy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="DeadPanel" type="Control" parent="HUD" unique_id=1200000030]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Backdrop" type="ColorRect" parent="HUD/DeadPanel" unique_id=1200000031]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.3, 0.15, 0.35, 0.7)
+
+[node name="DeadLabel" type="Label" parent="HUD/DeadPanel" unique_id=1200000032]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+theme_override_font_sizes/font_size = 16
+text = "You fell out of the sky!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DonutRow" type="HBoxContainer" parent="HUD/DeadPanel" unique_id=1200000099]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 34.0
+offset_right = 80.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="DonutLabel" type="Label" parent="HUD/DeadPanel/DonutRow" unique_id=1200000100]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+theme_override_font_sizes/font_size = 16
+text = "+0"
+vertical_alignment = 1
+
+[node name="DonutIcon" type="TextureRect" parent="HUD/DeadPanel/DonutRow" unique_id=1200000101]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_dead_donut")
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
+
+[node name="RetryRow" type="HBoxContainer" parent="HUD/DeadPanel" unique_id=1200000036]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="SpaceKey" type="TextureRect" parent="HUD/DeadPanel/RetryRow" unique_id=1200000037]
+layout_mode = 2
+texture = ExtResource("23_space")
+stretch_mode = 3
+texture_filter = 1
+
+[node name="Or" type="Label" parent="HUD/DeadPanel/RetryRow" unique_id=1200000038]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "or"
+vertical_alignment = 1
+
+[node name="RKey" type="TextureRect" parent="HUD/DeadPanel/RetryRow" unique_id=1200000039]
+layout_mode = 2
+texture = ExtResource("24_r")
+stretch_mode = 3
+texture_filter = 1
+
+[node name="TryAgain" type="Label" parent="HUD/DeadPanel/RetryRow" unique_id=1200000040]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "to try again"
+vertical_alignment = 1
+
+[node name="MenuButton" type="Button" parent="HUD/DeadPanel" unique_id=1200000035]
+focus_mode = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("20_home")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShopButton" type="Button" parent="HUD/DeadPanel" unique_id=1200000034]
+focus_mode = 0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -50.0
+offset_right = -60.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("18_shop")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SettingsButton" type="Button" parent="HUD/DeadPanel" unique_id=1200000033]
+focus_mode = 0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("17_gear")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SettingsPanel" type="Control" parent="HUD" unique_id=1200000050]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="HUD/SettingsPanel" unique_id=1200000051]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3, 0.15, 0.35, 0.8)
+
+[node name="Box" type="VBoxContainer" parent="HUD/SettingsPanel" unique_id=1200000052]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -80.0
+offset_right = 140.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="HUD/SettingsPanel/Box" unique_id=1200000053]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.95, 1)
+theme_override_font_sizes/font_size = 16
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="HUD/SettingsPanel/Box" unique_id=1200000054]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="HUD/SettingsPanel/Box" unique_id=1200000055]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.6
+
+[node name="SfxLabel" type="Label" parent="HUD/SettingsPanel/Box" unique_id=1200000056]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "Sound effects"
+
+[node name="SfxSlider" type="HSlider" parent="HUD/SettingsPanel/Box" unique_id=1200000057]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.6
+
+
+[node name="CloseButton" type="Button" parent="HUD/SettingsPanel" unique_id=1200000150]
+focus_mode = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("29_close")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShopPanel" type="Control" parent="HUD" unique_id=1200000060]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_shop")
+
+[node name="Backdrop" type="ColorRect" parent="HUD/ShopPanel" unique_id=1200000061]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.12, 0.3, 1)
+
+[node name="HelpPanel" type="Control" parent="HUD" unique_id=1200000090]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_help")
+
+[node name="Backdrop" type="ColorRect" parent="HUD/HelpPanel" unique_id=1200000091]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.12, 0.3, 0.88)
+
+[node name="PausePanel" type="Control" parent="HUD" unique_id=1200000100]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="HUD/PausePanel" unique_id=1200000101]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.12, 0.3, 1)
+
+[node name="Root" type="Control" parent="HUD/PausePanel" unique_id=1200000108]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -160.0
+offset_right = 250.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="HUD/PausePanel/Root" unique_id=1200000103]
+offset_top = 6.0
+offset_right = 200.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(1, 0.6, 0.85, 1)
+theme_override_colors/font_shadow_color = Color(0.3, 0.1, 0.35, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
+text = "Paused"
+
+[node name="CloseButton" type="Button" parent="HUD/PausePanel/Root" unique_id=1200000151]
+focus_mode = 0
+offset_left = 462.0
+offset_top = 2.0
+offset_right = 494.0
+offset_bottom = 34.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("29_close")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Grid" type="GridContainer" parent="HUD/PausePanel/Root" unique_id=1200000130]
+offset_left = 100.0
+offset_top = 56.0
+offset_right = 400.0
+offset_bottom = 300.0
+columns = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 14
+
+[node name="Cell0" type="VBoxContainer" parent="HUD/PausePanel/Root/Grid" unique_id=1200000110]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 0)
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="HUD/PausePanel/Root/Grid/Cell0" unique_id=1200000104]
+focus_mode = 0
+layout_mode = 2
+custom_minimum_size = Vector2(44, 44)
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("21_play")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label0" type="Label" parent="HUD/PausePanel/Root/Grid/Cell0" unique_id=1200000120]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "Resume"
+horizontal_alignment = 1
+
+[node name="Cell1" type="VBoxContainer" parent="HUD/PausePanel/Root/Grid" unique_id=1200000111]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 0)
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="HUD/PausePanel/Root/Grid/Cell1" unique_id=1200000109]
+focus_mode = 0
+layout_mode = 2
+custom_minimum_size = Vector2(44, 44)
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("22_restart")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label1" type="Label" parent="HUD/PausePanel/Root/Grid/Cell1" unique_id=1200000121]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "Restart"
+horizontal_alignment = 1
+
+[node name="Cell2" type="VBoxContainer" parent="HUD/PausePanel/Root/Grid" unique_id=1200000112]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 0)
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="SettingsButton" type="Button" parent="HUD/PausePanel/Root/Grid/Cell2" unique_id=1200000106]
+focus_mode = 0
+layout_mode = 2
+custom_minimum_size = Vector2(44, 44)
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("17_gear")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label2" type="Label" parent="HUD/PausePanel/Root/Grid/Cell2" unique_id=1200000122]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Cell3" type="VBoxContainer" parent="HUD/PausePanel/Root/Grid" unique_id=1200000113]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 0)
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="HelpButton" type="Button" parent="HUD/PausePanel/Root/Grid/Cell3" unique_id=1200000105]
+focus_mode = 0
+layout_mode = 2
+custom_minimum_size = Vector2(44, 44)
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("15_book")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label3" type="Label" parent="HUD/PausePanel/Root/Grid/Cell3" unique_id=1200000123]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="Cell4" type="VBoxContainer" parent="HUD/PausePanel/Root/Grid" unique_id=1200000114]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 0)
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TrophyButton" type="Button" parent="HUD/PausePanel/Root/Grid/Cell4" unique_id=1200000152]
+focus_mode = 0
+layout_mode = 2
+custom_minimum_size = Vector2(44, 44)
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("25_trophy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label4" type="Label" parent="HUD/PausePanel/Root/Grid/Cell4" unique_id=1200000124]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "Achievements"
+horizontal_alignment = 1
+
+[node name="Cell5" type="VBoxContainer" parent="HUD/PausePanel/Root/Grid" unique_id=1200000115]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 0)
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="MenuButton" type="Button" parent="HUD/PausePanel/Root/Grid/Cell5" unique_id=1200000107]
+focus_mode = 0
+layout_mode = 2
+custom_minimum_size = Vector2(44, 44)
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_cloud_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cloud_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cloud_button")
+icon = ExtResource("20_home")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label5" type="Label" parent="HUD/PausePanel/Root/Grid/Cell5" unique_id=1200000125]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.98, 1)
+text = "Home"
+horizontal_alignment = 1
+
+[node name="AchievementsPanel" type="Control" parent="HUD" unique_id=1200000140]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("26_ach")
+
+[node name="Backdrop" type="ColorRect" parent="HUD/AchievementsPanel" unique_id=1200000141]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.12, 0.3, 1)
