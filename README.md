@@ -6,6 +6,25 @@ Run, jump and duck past puddles, angry dogs and crying rain clouds. Grab a golde
 
 Made in Godot 4.7 for Jumpstart Hack Club.
 
+## Play it
+
+Play in your browser (no install): [wthaarushi.itch.io/meowicorns-donut-adventure](https://wthaarushi.itch.io/meowicorns-donut-adventure)
+
+## Run it locally
+
+You need [Godot 4.7](https://godotengine.org/download) (the standard build, not .NET).
+
+1. Clone or download this repo:
+   ```
+   git clone https://github.com/wthaarushi/meowicorns-donut-adventure.git
+   ```
+2. Open Godot, click **Import**, and pick the `project.godot` file inside the folder.
+3. Press **F5** (or the Play button in the top right) to run the game.
+
+The first launch takes a few seconds while Godot imports the art and audio. Progress is saved to Godot's user data folder, so your donuts and unlocked cats stick around between runs.
+
+To build the web version yourself: **Project → Export → Web → Export Project**. You will need the export templates installed (Editor → Manage Export Templates).
+
 ## Controls
 
 | Key | Action |
